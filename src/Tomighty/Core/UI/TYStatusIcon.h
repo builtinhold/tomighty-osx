@@ -7,13 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const ICON_STATUS_IDLE;
-extern NSString * const ICON_STATUS_POMODORO;
-extern NSString * const ICON_STATUS_SHORT_BREAK;
-extern NSString * const ICON_STATUS_LONG_BREAK;
+typedef NS_ENUM(NSUInteger, UIIconStatusType)
+{
+    UIIconStatusTypeIdle = 0,
+    UIIconStatusTypePomodoro = 1,
+    UIIconStatusTypeShortBreak = 2,
+    UIIconStatusTypeLongBreak = 3,
+    UIIconStatusTypeAlternate = 4
+    
+} ;
 
 @protocol TYStatusIcon <NSObject>
 
-- (void)changeIcon:(NSString *)iconName;
+- (void)changeIcon:(int) iconName;
 
 @end

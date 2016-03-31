@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSButton *check_play_sound_when_timer_goes_off;
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_pomodoro;
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_break;
+@property (weak) IBOutlet NSButton *check_use_black_icons_only;
 
 - (IBAction)save_time_pomodoro:(id)sender;
 - (IBAction)save_time_short_break:(id)sender;
@@ -27,5 +28,6 @@
 - (IBAction)save_play_sound_when_timer_goes_off:(id)sender;
 - (IBAction)save_play_ticktock_sound_during_pomodoro:(id)sender;
 - (IBAction)save_play_ticktock_sound_during_break:(id)sender;
+- (IBAction)save_use_black_icons_only:(id)sender;
 
 @end

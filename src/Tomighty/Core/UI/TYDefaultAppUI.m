@@ -30,7 +30,7 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:true];
-    [statusIcon changeIcon:ICON_STATUS_IDLE];
+    [statusIcon changeIcon:UIIconStatusTypeIdle];
     [self updateRemainingTime:0];
 }
 
@@ -40,7 +40,7 @@
     [statusMenu enableStartPomodoroItem:false];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:true];
-    [statusIcon changeIcon:ICON_STATUS_POMODORO];
+    [statusIcon changeIcon:UIIconStatusTypePomodoro];
 }
 
 - (void)switchToShortBreakState
@@ -49,7 +49,7 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:false];
     [statusMenu enableStartLongBreakItem:true];
-    [statusIcon changeIcon:ICON_STATUS_SHORT_BREAK];
+    [statusIcon changeIcon:UIIconStatusTypeShortBreak];
 }
 
 - (void)switchToLongBreakState
@@ -58,7 +58,7 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:false];
-    [statusIcon changeIcon:ICON_STATUS_LONG_BREAK];
+    [statusIcon changeIcon:UIIconStatusTypeLongBreak];
 }
 
 - (void)updateRemainingTime:(int)remainingSeconds

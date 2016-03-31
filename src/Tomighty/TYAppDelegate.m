@@ -51,11 +51,17 @@
     id <TYSystemTimer> systemTimer = [[TYDefaultSystemTimer alloc] init];
     id <TYTimer> timer = [TYDefaultTimer createWith:eventBus systemTimer:systemTimer];
     id <TYSoundPlayer> soundPlayer = [[TYDefaultSoundPlayer alloc] init];
-    id <TYStatusIcon> statusIcon = [[TYDefaultStatusIcon alloc] initWith:self.statusMenu imageLoader:imageLoader];
+    
+    preferences = [[TYUserDefaultsPreferences alloc] initWith:eventBus];
+    
+    BOOL useBlackIconsOnly = (BOOL)[preferences getInt:PREF_USE_BLACK_ICONS_ONLY];
+    id <TYStatusIcon> statusIcon = [[TYDefaultStatusIcon alloc] initWith:self.statusMenu
+                                                             imageLoader:imageLoader
+                                                            useBlackIconsOnly:useBlackIconsOnly];
+    
     id <TYStatusMenu> statusMenu = self;
     id <TYAppUI> appUi = [[TYDefaultAppUI alloc] initWith:statusMenu statusIcon:statusIcon];
     
-    preferences = [[TYUserDefaultsPreferences alloc] initWith:eventBus];
     soundAgent = [[TYSoundAgent alloc] initWith:soundPlayer preferences:preferences];
     syntheticEventPublisher = [[TYSyntheticEventPublisher alloc] init];
     userInterfaceAgent = [[TYUserInterfaceAgent alloc] initWith:appUi];

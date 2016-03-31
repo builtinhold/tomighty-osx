@@ -7,20 +7,15 @@
 
 #import "TYDefaultStatusIcon.h"
 
-NSString * const ICON_STATUS_IDLE = @"icon-status-idle";
-NSString * const ICON_STATUS_POMODORO = @"icon-status-idle";
-NSString * const ICON_STATUS_SHORT_BREAK = @"icon-status-idle";
-NSString * const ICON_STATUS_LONG_BREAK = @"icon-status-idle";
-NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
-
 @implementation TYDefaultStatusIcon
 {
     __strong NSStatusItem *statusItem;
     __strong NSMutableDictionary *iconImageCache;
     __strong TYImageLoader *imageLoader;
+    BOOL _useBlackIconsOnly;
 }
 
-- (id)initWith:(NSMenu *)aMenu imageLoader:(TYImageLoader *)anImageLoader
+- (id)initWith:(NSMenu *)aMenu imageLoader:(TYImageLoader *)anImageLoader useBlackIconsOnly:(BOOL)useBlackIconsOnly
 {
     self = [super init];
     if(self)
@@ -28,6 +23,7 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
         imageLoader = anImageLoader;
         iconImageCache = [[NSMutableDictionary alloc] initWithCapacity:8];
         statusItem = [self createStatusItem:aMenu];
+        _useBlackIconsOnly = useBlackIconsOnly;
     }
     return self;
 }
@@ -37,20 +33,22 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
     NSStatusItem *newStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     
     [newStatusItem setHighlightMode:YES];
-    [newStatusItem setImage:[self getIconImage:ICON_STATUS_IDLE]];
-    [newStatusItem setAlternateImage:[self getIconImage:ICON_STATUS_ALTERNATE]];
+    [newStatusItem setImage:[self getIconImage:UIIconStatusTypeIdle]];
+    [newStatusItem setAlternateImage:[self getIconImage:UIIconStatusTypeAlternate]];
     [newStatusItem setMenu:menu];
     
     return newStatusItem;
 }
 
-- (void)changeIcon:(NSString *)iconName
+- (void)changeIcon:(int)icon
 {
-    [statusItem setImage:[self getIconImage:iconName]];
+    [statusItem setImage:[self getIconImage:icon]];
 }
 
-- (NSImage *)getIconImage:(NSString *)iconName
+- (NSImage *)getIconImage:(UIIconStatusType)iconType
 {
+    NSString *iconName = [self getIconImageName:iconType];
+    
     NSImage *image = [iconImageCache objectForKey:iconName];
     if(!image)
     {
@@ -58,6 +56,31 @@ NSString * const ICON_STATUS_ALTERNATE = @"icon-status-alternate";
         iconImageCache[iconName] = image;
     }
     return image;
+}
+
+- (NSString *)getIconImageName:(UIIconStatusType) iconType
+{
+    switch(iconType)
+    {
+        case UIIconStatusTypeIdle:
+            return @"icon-status-idle";
+            break;
+        case UIIconStatusTypePomodoro:
+            return _useBlackIconsOnly? @"icon-status-idle" : @"icon-status-pomodoro";
+            break;
+        case UIIconStatusTypeShortBreak:
+            return _useBlackIconsOnly? @"icon-status-idle" : @"icon-status-short-break";
+            break;
+        case UIIconStatusTypeLongBreak:
+            return _useBlackIconsOnly? @"icon-status-idle" : @"icon-status-long-break";
+            break;
+        case UIIconStatusTypeAlternate:
+            return  @"icon-status-alternate";
+            break;
+        default:
+            return @"";
+            
+    }
 }
 
 @end

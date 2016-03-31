@@ -12,6 +12,6 @@
 
 @interface TYDefaultStatusIcon : NSObject <TYStatusIcon>
 
-- (id)initWith:(NSMenu *)menu imageLoader:(TYImageLoader *)imageLoader;
+- (id)initWith:(NSMenu *)menu imageLoader:(TYImageLoader *)imageLoader useBlackIconsOnly:(BOOL)useBlackIconsOnly;
 
 @end
