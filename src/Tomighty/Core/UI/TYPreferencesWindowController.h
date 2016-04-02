@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_pomodoro;
 @property (weak) IBOutlet NSButton *check_play_ticktock_sound_during_break;
 @property (weak) IBOutlet NSButton *check_use_black_icons_only;
+@property (weak) IBOutlet NSTextField *text_pomodoros_per_cycle;
 
 - (IBAction)save_time_pomodoro:(id)sender;
 - (IBAction)save_time_short_break:(id)sender;
@@ -29,5 +30,6 @@
 - (IBAction)save_play_ticktock_sound_during_pomodoro:(id)sender;
 - (IBAction)save_play_ticktock_sound_during_break:(id)sender;
 - (IBAction)save_use_black_icons_only:(id)sender;
+- (IBAction)save_pomodoros_per_cycle:(id)sender;
 
 @end

@@ -16,6 +16,7 @@ NSString * const PREF_PLAY_SOUND_WHEN_TIMER_GOES_OFF         = @"org.tomighty.so
 NSString * const PREF_PLAY_TICKTOCK_SOUND_DURING_POMODORO  = @"org.tomighty.sound.play_tick_tock_during_pomodoro";
 NSString * const PREF_PLAY_TICKTOCK_SOUND_DURING_BREAK     = @"org.tomighty.sound.play_tick_tock_during_break";
 NSString * const PREF_USE_BLACK_ICONS_ONLY  =  @"org.tomighty.use_black_icons_only";
+NSString * const PREF_NUMBER_POMODOROS_PER_CYCLE = @"org.tomighty.number_pomodoros_per_cycle";
 
 @implementation TYUserDefaultsPreferences
 {
@@ -39,6 +40,7 @@ NSString * const PREF_USE_BLACK_ICONS_ONLY  =  @"org.tomighty.use_black_icons_on
         [defaultValues setObject:[NSNumber numberWithInt:true] forKey:PREF_PLAY_TICKTOCK_SOUND_DURING_POMODORO];
         [defaultValues setObject:[NSNumber numberWithInt:true] forKey:PREF_PLAY_TICKTOCK_SOUND_DURING_BREAK];
         [defaultValues setObject:[NSNumber numberWithInt:false] forKey:PREF_USE_BLACK_ICONS_ONLY];
+        [defaultValues setObject:[NSNumber numberWithInt:4] forKey:PREF_NUMBER_POMODOROS_PER_CYCLE];
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     }

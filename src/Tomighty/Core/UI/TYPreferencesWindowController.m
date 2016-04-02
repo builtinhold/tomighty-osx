@@ -40,6 +40,7 @@
     [self.check_play_ticktock_sound_during_break setState:[preferences getInt:PREF_PLAY_TICKTOCK_SOUND_DURING_BREAK]];
     [self.check_use_black_icons_only setState:[preferences getInt:
         PREF_USE_BLACK_ICONS_ONLY]];
+    [self.text_pomodoros_per_cycle setIntValue:[preferences getInt:PREF_NUMBER_POMODOROS_PER_CYCLE]];
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
@@ -77,6 +78,10 @@
 
 - (IBAction)save_use_black_icons_only:(id)sender {
     [preferences setInt:PREF_USE_BLACK_ICONS_ONLY value:(int)[self.check_use_black_icons_only state]];
+}
+
+- (IBAction)save_pomodoros_per_cycle:(id)sender {
+    [preferences setInt:PREF_NUMBER_POMODOROS_PER_CYCLE value:[self.text_pomodoros_per_cycle intValue]];
 }
 
 @end

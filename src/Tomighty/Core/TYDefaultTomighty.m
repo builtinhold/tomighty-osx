@@ -46,7 +46,7 @@
     id <TYTimerContext> timerContext = [TYDefaultTimerContext
                                         ofType:contextType
                                         name:contextName
-                                        remainingSeconds:minutes * 60];
+                                        remainingSeconds:minutes /** 60*/];
     [timer start:timerContext];
 }
 
@@ -92,7 +92,7 @@
 {
     int newCount = pomodoroCount + 1;
     
-    if(newCount > 4)
+    if(newCount > [preferences getInt:PREF_NUMBER_POMODOROS_PER_CYCLE])
     {
         newCount = 1;
     }
