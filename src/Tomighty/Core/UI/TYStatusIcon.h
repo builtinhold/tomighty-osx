@@ -21,4 +21,6 @@ typedef NS_ENUM(NSUInteger, UIIconStatusType)
 
 - (void)changeIcon:(int) iconName;
 
+- (void) setUseBlackIconsOnly:(BOOL)useBlackIconsOnly;
+
 @end

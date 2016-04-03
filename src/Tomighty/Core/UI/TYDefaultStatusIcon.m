@@ -13,6 +13,7 @@
     __strong NSMutableDictionary *iconImageCache;
     __strong TYImageLoader *imageLoader;
     BOOL _useBlackIconsOnly;
+    UIIconStatusType _currentIconStatusType;
 }
 
 - (id)initWith:(NSMenu *)aMenu imageLoader:(TYImageLoader *)anImageLoader useBlackIconsOnly:(BOOL)useBlackIconsOnly
@@ -43,6 +44,7 @@
 - (void)changeIcon:(int)icon
 {
     [statusItem setImage:[self getIconImage:icon]];
+    _currentIconStatusType = icon;
 }
 
 - (NSImage *)getIconImage:(UIIconStatusType)iconType
@@ -81,6 +83,17 @@
             return @"";
             
     }
+}
+
+- (void)setUseBlackIconsOnly:(BOOL) useBlackIconsOnly
+{
+    _useBlackIconsOnly = useBlackIconsOnly;
+    [self refreshCurrentIcon];
+}
+
+- (void)refreshCurrentIcon
+{
+    [self changeIcon:_currentIconStatusType];
 }
 
 @end

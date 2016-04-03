@@ -72,6 +72,12 @@
     [userInterfaceAgent updateAppUiInResponseToEventsFrom:eventBus];
     
     [self initMenuItemsIcons:imageLoader];
+    
+    //GUI real time refresh
+    [eventBus subscribeTo:PREFERENCE_CHANGE subscriber:^(id eventData)
+     {
+         [statusIcon setUseBlackIconsOnly:(BOOL)[preferences getInt:PREF_USE_BLACK_ICONS_ONLY]];
+     }];
 }
 
 - (void)initMenuItemsIcons:(TYImageLoader *)imageLoader {

@@ -234,7 +234,7 @@
                                         </box>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zV7-Jl-UfF">
                                             <rect key="frame" x="15" y="94" width="253" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use black icons only (requires restart)" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nBF-VQ-7Qd">
+                                            <buttonCell key="cell" type="check" title="Use black icons only" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nBF-VQ-7Qd">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
