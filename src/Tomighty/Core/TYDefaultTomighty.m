@@ -30,11 +30,8 @@
         timer = aTimer;
         preferences = aPreferences;
         eventBus = anEventBus;
-        
-        [eventBus subscribeTo:POMODORO_COMPLETE subscriber:^(id eventData)
-        {
-            [self incrementPomodoroCount];
-        }];
+    
+        [self registerRequiredEvents];
     }
     return self;
 }
@@ -98,6 +95,25 @@
     }
     
     [self setPomodoroCount:newCount];
+}
+
+- (void) registerRequiredEvents
+{
+    [eventBus subscribeTo:POMODORO_COMPLETE subscriber:^(id eventData)
+     {
+         [self incrementPomodoroCount];
+         BOOL shouldDisplayEncourageMessage = (arc4random_uniform(10) % 5 == 0 )? YES: NO;
+         [self displayNotification:@"Pomodoro finished" withEncourage:shouldDisplayEncourageMessage];
+     }];
+}
+
+- (void) displayNotification:(NSString *)message withEncourage:(BOOL) displayEncourage
+{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = message;
+    notification.informativeText = displayEncourage ? @"Well done!":@"";
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 @end
