@@ -47,6 +47,16 @@
             {
                 [eventBus publish:POMODORO_COMPLETE data:timerContext];
             }
+            else if([timerContext getContextType] == SHORT_BREAK)
+            {
+                [eventBus publish:BREAK_COMPLETE data:timerContext];
+                [eventBus publish:SHORT_BREAK_COMPLETE data:timerContext];
+            }
+            else if([timerContext getContextType] == LONG_BREAK)
+            {
+                [eventBus publish:BREAK_COMPLETE data:timerContext];
+                [eventBus publish:LONG_BREAK_COMPLETE data:timerContext];
+            }
         }
     }];
 }
