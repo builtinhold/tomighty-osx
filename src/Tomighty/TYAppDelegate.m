@@ -73,11 +73,8 @@
     
     [self initMenuItemsIcons:imageLoader];
     
-    //GUI real time refresh
-    [eventBus subscribeTo:PREFERENCE_CHANGE subscriber:^(id eventData)
-     {
-         [statusIcon setUseBlackIconsOnly:(BOOL)[preferences getInt:PREF_USE_BLACK_ICONS_ONLY]];
-     }];
+    [self updateStatusIcon:statusIcon OnEventsOnEventsFrom:eventBus];
+    
 }
 
 - (void)initMenuItemsIcons:(TYImageLoader *)imageLoader {
@@ -162,6 +159,18 @@
 - (void)setPomodoroCountText:(NSString *)text
 {
     [self.pomodoroCountMenuItem setTitle:text];
+}
+
+- (void)updateStatusIcon:(TYDefaultStatusIcon *)statusIcon OnEventsOnEventsFrom:(TYDefaultEventBus *)eventBus
+{
+    //GUI real time refresh
+    //This is not the most elegant way have the statusIcon have information from the preferences,
+    //but folding a reference to the preferences part of the model in the View is a worse alternative
+    //in my opinion, so I am encapsulating this event subscription in a method and leave it here.
+    [eventBus subscribeTo:PREFERENCE_CHANGE subscriber:^(id eventData)
+     {
+         [statusIcon setUseBlackIconsOnly:(BOOL)[preferences getInt:PREF_USE_BLACK_ICONS_ONLY]];
+     }];
 }
 
 @end
