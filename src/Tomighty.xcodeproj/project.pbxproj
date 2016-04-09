@@ -63,6 +63,7 @@
 		30CFBF1218BD76F7000266B4 /* TYMockSystemTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CFBF1118BD76F7000266B4 /* TYMockSystemTimer.m */; };
 		30DB72F618CD4FC800293915 /* TYTomightyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F518CD4FC800293915 /* TYTomightyTests.m */; };
 		30DB72FA18CD54D200293915 /* TYDefaultTomighty.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F918CD54D200293915 /* TYDefaultTomighty.m */; };
+		63936C611CB8CF7500AC9760 /* TYNotificationAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 63936C601CB8CF7500AC9760 /* TYNotificationAgent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,8 @@
 		30DB72F718CD54C000293915 /* TYTomighty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYTomighty.h; path = Core/TYTomighty.h; sourceTree = "<group>"; };
 		30DB72F818CD54D200293915 /* TYDefaultTomighty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYDefaultTomighty.h; path = Core/TYDefaultTomighty.h; sourceTree = "<group>"; };
 		30DB72F918CD54D200293915 /* TYDefaultTomighty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYDefaultTomighty.m; path = Core/TYDefaultTomighty.m; sourceTree = "<group>"; };
+		63936C5F1CB8CF7500AC9760 /* TYNotificationAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYNotificationAgent.h; path = Core/Reactive/TYNotificationAgent.h; sourceTree = "<group>"; };
+		63936C601CB8CF7500AC9760 /* TYNotificationAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYNotificationAgent.m; path = Core/Reactive/TYNotificationAgent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +410,8 @@
 				3032EEE918C6BCBC00070BD2 /* TYSyntheticEventPublisher.m */,
 				305D161718CD030400CE6A34 /* TYUserInterfaceAgent.h */,
 				305D161818CD030400CE6A34 /* TYUserInterfaceAgent.m */,
+				63936C5F1CB8CF7500AC9760 /* TYNotificationAgent.h */,
+				63936C601CB8CF7500AC9760 /* TYNotificationAgent.m */,
 			);
 			name = Reactive;
 			sourceTree = "<group>";
@@ -615,6 +620,7 @@
 				309C5B1D18C636BB001B4359 /* TYSoundAgent.m in Sources */,
 				30C383E018CFE02100FABFFE /* TYDefaultAppUI.m in Sources */,
 				30415FB618C51C290069FAE3 /* TYUserDefaultsPreferences.m in Sources */,
+				63936C611CB8CF7500AC9760 /* TYNotificationAgent.m in Sources */,
 				3039D2F518C4DF7C008689C9 /* TYDefaultEventBus.m in Sources */,
 				309394EA18D0CBEC00D6C71A /* TYImageLoader.m in Sources */,
 				304AF82918BD04BE00A2EA74 /* TYAppDelegate.m in Sources */,

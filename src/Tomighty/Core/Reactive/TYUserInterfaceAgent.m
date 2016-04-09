@@ -50,6 +50,14 @@
         NSNumber *pomodoroCount = eventData;
         [ui updatePomodoroCount:[pomodoroCount intValue]];
     }];
+    
+    [eventBus subscribeTo:ICON_TYPE_CHANGE subscriber:^(id eventData)
+     {
+        BOOL value = [(NSNumber*)eventData boolValue];
+        [ui updateUseBlackIconsOnly:value];
+     }];
+    
 }
+
 
 @end
