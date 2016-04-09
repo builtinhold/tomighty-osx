@@ -16,6 +16,5 @@
 - (void)updateRemainingTime:(int)remainingSeconds;
 - (void)updatePomodoroCount:(int)count;
 - (void)updateUseBlackIconsOnly:(BOOL)useBlackIconsOnly;
-- (void)updatePomodorosPerCycle:(int)count;
 
 @end

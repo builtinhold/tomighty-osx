@@ -43,7 +43,7 @@
     id <TYTimerContext> timerContext = [TYDefaultTimerContext
                                         ofType:contextType
                                         name:contextName
-                                        remainingSeconds:minutes /* 60*/];
+                                        remainingSeconds:minutes * 60];
     [timer start:timerContext];
 }
 
