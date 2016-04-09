@@ -15,4 +15,5 @@
 
 - (id)initWith:(id <TYStatusMenu>)statusMenu statusIcon:(id<TYStatusIcon>)statusIcon;
 
+
 @end

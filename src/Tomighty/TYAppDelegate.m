@@ -30,6 +30,7 @@
 #import "TYDefaultTimer.h"
 #import "TYDefaultTomighty.h"
 #import "TYUserDefaultsPreferences.h"
+#import "TYNotificationAgent.h"
 
 #import "TYPreferencesWindowController.h"
 
@@ -41,6 +42,7 @@
     __strong TYSyntheticEventPublisher *syntheticEventPublisher;
     __strong TYUserInterfaceAgent *userInterfaceAgent;
     __strong TYPreferencesWindowController *preferencesWindow;
+    __strong TYNotificationAgent *notificationsAgent;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -67,14 +69,15 @@
     userInterfaceAgent = [[TYUserInterfaceAgent alloc] initWith:appUi];
     tomighty = [[TYDefaultTomighty alloc] initWith:timer preferences:preferences eventBus:eventBus];
     
+    int pomodorosPercycle = [preferences getInt:PREF_NUMBER_POMODOROS_PER_CYCLE];
+    notificationsAgent = [[TYNotificationAgent alloc] initWith:eventBus pomodorosPerCycle:pomodorosPercycle];
+    
     [syntheticEventPublisher publishSyntheticEventsInResponseToOtherEventsFrom:eventBus];
     [soundAgent playSoundsInResponseToEventsFrom:eventBus];
     [userInterfaceAgent updateAppUiInResponseToEventsFrom:eventBus];
     
     [self initMenuItemsIcons:imageLoader];
-    
-    [self updateStatusIcon:statusIcon OnEventsOnEventsFrom:eventBus];
-    
+   
 }
 
 - (void)initMenuItemsIcons:(TYImageLoader *)imageLoader {
@@ -161,16 +164,5 @@
     [self.pomodoroCountMenuItem setTitle:text];
 }
 
-- (void)updateStatusIcon:(TYDefaultStatusIcon *)statusIcon OnEventsOnEventsFrom:(TYDefaultEventBus *)eventBus
-{
-    //GUI real time refresh
-    //This is not the most elegant way have the statusIcon have information from the preferences,
-    //but folding a reference to the preferences part of the model in the View is a worse alternative
-    //in my opinion, so I am encapsulating this event subscription in a method and leave it here.
-    [eventBus subscribeTo:PREFERENCE_CHANGE subscriber:^(id eventData)
-     {
-         [statusIcon setUseBlackIconsOnly:(BOOL)[preferences getInt:PREF_USE_BLACK_ICONS_ONLY]];
-     }];
-}
 
 @end

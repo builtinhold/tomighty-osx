@@ -58,7 +58,17 @@ NSString * const PREF_NUMBER_POMODOROS_PER_CYCLE = @"org.tomighty.number_pomodor
     if(value != actualValue)
     {
         [[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
+        
         [eventBus publish:PREFERENCE_CHANGE data:key];
+        
+        //It would have been nice passing just a dictionary around in a generic way.
+        //But that would force us to include TYPreferences everywhere defeating the purpose
+        //of the eventBus handing over the values.
+        if(key == PREF_USE_BLACK_ICONS_ONLY)
+            [eventBus publish:ICON_TYPE_CHANGE data:[NSNumber numberWithInt:value]];
+        else if(key == PREF_NUMBER_POMODOROS_PER_CYCLE)
+            [eventBus publish:POMODORO_PER_CYCLE_CHANGE data:[NSNumber numberWithInt:value]];
+        
     }
 }
 

@@ -83,4 +83,10 @@
     [statusMenu enableResetPomodoroCountItem:count > 0];
 }
 
+- (void)updateUseBlackIconsOnly:(BOOL)useBlackIconsOnly
+{
+    [statusIcon setUseBlackIconsOnly:useBlackIconsOnly];
+}
+
+
 @end
