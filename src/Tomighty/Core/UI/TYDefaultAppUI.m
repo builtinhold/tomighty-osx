@@ -30,6 +30,7 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:true];
+    [statusMenu enableStartCycleItem:true];
     [statusIcon changeIcon:UIIconStatusTypeIdle];
     [self updateRemainingTime:0];
 }
@@ -40,6 +41,17 @@
     [statusMenu enableStartPomodoroItem:false];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:true];
+    [statusMenu enableStartCycleItem:false];
+    [statusIcon changeIcon:UIIconStatusTypePomodoro];
+}
+
+- (void)switchToPomodoroCycleState
+{
+    [statusMenu enableStopTimerItem:true];
+    [statusMenu enableStartPomodoroItem:false];
+    [statusMenu enableStartShortBreakItem:false];
+    [statusMenu enableStartLongBreakItem:false];
+    [statusMenu enableStartCycleItem:false];
     [statusIcon changeIcon:UIIconStatusTypePomodoro];
 }
 
@@ -49,6 +61,17 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:false];
     [statusMenu enableStartLongBreakItem:true];
+    [statusMenu enableStartCycleItem:false];
+    [statusIcon changeIcon:UIIconStatusTypeShortBreak];
+}
+
+- (void)switchToShortBreakCycleState
+{
+    [statusMenu enableStopTimerItem:true];
+    [statusMenu enableStartPomodoroItem:false];
+    [statusMenu enableStartShortBreakItem:false];
+    [statusMenu enableStartLongBreakItem:false];
+    [statusMenu enableStartCycleItem:false];
     [statusIcon changeIcon:UIIconStatusTypeShortBreak];
 }
 
@@ -58,6 +81,17 @@
     [statusMenu enableStartPomodoroItem:true];
     [statusMenu enableStartShortBreakItem:true];
     [statusMenu enableStartLongBreakItem:false];
+    [statusMenu enableStartCycleItem:false];
+    [statusIcon changeIcon:UIIconStatusTypeLongBreak];
+}
+
+- (void)switchToLongBreakCycleState
+{
+    [statusMenu enableStopTimerItem:true];
+    [statusMenu enableStartPomodoroItem:false];
+    [statusMenu enableStartShortBreakItem:false];
+    [statusMenu enableStartLongBreakItem:false];
+    [statusMenu enableStartCycleItem:false];
     [statusIcon changeIcon:UIIconStatusTypeLongBreak];
 }
 

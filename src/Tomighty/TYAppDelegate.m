@@ -86,6 +86,7 @@
     [self.startPomodoroMenuItem setImage:[imageLoader loadIcon:@"icon-start-pomodoro"]];
     [self.startShortBreakMenuItem setImage:[imageLoader loadIcon:@"icon-start-short-break"]];
     [self.startLongBreakMenuItem setImage:[imageLoader loadIcon:@"icon-start-long-break"]];
+    [self.startCycleMenuItem setImage:[imageLoader loadIcon:@"icon-start-cycle"]];
 }
 
 - (IBAction)startPomodoro:(id)sender
@@ -113,6 +114,10 @@
     [tomighty resetPomodoroCount];
 }
 
+- (IBAction)startCycle:(id)sender
+{
+    [tomighty startCycle];
+}
 - (IBAction)showPreferences:(id)sender
 {
     if(!preferencesWindow)
@@ -137,6 +142,11 @@
 - (void)enableStartPomodoroItem:(BOOL)enable
 {
     [self enableTimerMenuItem:self.startPomodoroMenuItem enable:enable];
+}
+
+- (void)enableStartCycleItem:(BOOL)enable
+{
+    [self enableTimerMenuItem:self.startCycleMenuItem enable:enable];
 }
 
 - (void)enableStartShortBreakItem:(BOOL)enable

@@ -35,7 +35,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Time" identifier="1" id="hD4-kc-p5e">
-                                <view key="view" ambiguous="YES" id="3sJ-dh-fwp">
+                                <view key="view" id="3sJ-dh-fwp">
                                     <rect key="frame" x="10" y="33" width="278" height="153"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -162,7 +162,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Notifications" identifier="2" id="Tbo-V2-2m2">
-                                <view key="view" id="nvp-HR-2ZP">
+                                <view key="view" ambiguous="YES" id="nvp-HR-2ZP">
                                     <rect key="frame" x="10" y="33" width="278" height="153"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>

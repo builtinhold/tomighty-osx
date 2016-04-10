@@ -13,8 +13,11 @@
 - (void)switchToPomodoroState;
 - (void)switchToShortBreakState;
 - (void)switchToLongBreakState;
+- (void)switchToShortBreakCycleState;
+- (void)switchToLongBreakCycleState;
 - (void)updateRemainingTime:(int)remainingSeconds;
 - (void)updatePomodoroCount:(int)count;
 - (void)updateUseBlackIconsOnly:(BOOL)useBlackIconsOnly;
+- (void)switchToPomodoroCycleState;
 
 @end

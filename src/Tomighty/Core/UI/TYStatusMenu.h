@@ -14,6 +14,7 @@
 - (void)enableStartShortBreakItem:(BOOL)enable;
 - (void)enableStartLongBreakItem:(BOOL)enable;
 - (void)enableResetPomodoroCountItem:(BOOL)enable;
+- (void)enableStartCycleItem:(BOOL)enable;
 - (void)setRemainingTimeText:(NSString *)text;
 - (void)setPomodoroCountText:(NSString *)text;
 

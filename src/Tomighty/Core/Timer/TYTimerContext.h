@@ -21,5 +21,7 @@ typedef NS_ENUM(NSInteger, TYTimerContextType)
 - (int)getRemainingSeconds;
 - (void)addSeconds:(int)seconds;
 - (TYTimerContextType)getContextType;
+- (BOOL)getIsCycle;
+- (void)setIsCycle:(BOOL)isCycle;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface TYDefaultTimerContext : NSObject <TYTimerContext>
 
-+ (id)ofType:(TYTimerContextType)contextType name:(NSString *)name remainingSeconds:(int)initialRemainingSeconds;
++ (id)ofType:(TYTimerContextType)contextType name:(NSString *)name remainingSeconds:(int)initialRemainingSeconds performCycle:(BOOL)performCycle;
 
 @end

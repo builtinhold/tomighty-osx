@@ -17,6 +17,8 @@
     __strong id <TYTimer> timer;
     __strong id <TYPreferences> preferences;
     __strong id <TYEventBus> eventBus;
+    
+    BOOL isCycle;
 }
 
 - (id)initWith:(id <TYTimer>)aTimer
@@ -32,6 +34,8 @@
         eventBus = anEventBus;
     
         [self registerRequiredEvents];
+        
+        isCycle = NO;
     }
     return self;
 }
@@ -43,8 +47,15 @@
     id <TYTimerContext> timerContext = [TYDefaultTimerContext
                                         ofType:contextType
                                         name:contextName
-                                        remainingSeconds:minutes * 60];
+                                        remainingSeconds:minutes * 60
+                                        performCycle:isCycle];
     [timer start:timerContext];
+}
+
+- (void)startCycle
+{
+    [self setPerformCycle:YES];
+    [self startPomodoro];
 }
 
 - (void)startPomodoro
@@ -71,7 +82,8 @@
 
 - (void)stopTimer
 {
-    [timer stop];
+    [self setPerformCycle:NO];
+    [timer manualStop];
 }
 
 - (void)setPomodoroCount:(int)newCount
@@ -97,12 +109,59 @@
     [self setPomodoroCount:newCount];
 }
 
+- (void)setPerformCycle:(BOOL) performCycle
+{
+    isCycle = performCycle;
+}
+
 - (void) registerRequiredEvents
 {
     [eventBus subscribeTo:POMODORO_COMPLETE subscriber:^(id eventData)
-     {
-         [self incrementPomodoroCount];
+    {
+        [self incrementPomodoroCount];
+        
+        [self handlePossibleStatusChangeIfFrom:POMODORO_COMPLETE];
+        
     }];
+
+    [eventBus subscribeTo:SHORT_BREAK_COMPLETE subscriber:^(id eventData)
+    {
+        [self handlePossibleStatusChangeIfFrom:SHORT_BREAK_COMPLETE];
+    }];
+    
+    [eventBus subscribeTo:LONG_BREAK_COMPLETE subscriber:^(id eventData)
+    {
+        [self handlePossibleStatusChangeIfFrom:LONG_BREAK_COMPLETE];
+    }];
+}
+
+- (BOOL) isLastPomodoroOfTheCycle
+{
+    return pomodoroCount == [preferences getInt:PREF_NUMBER_POMODOROS_PER_CYCLE];
+}
+
+- (void) handlePossibleStatusChangeIfFrom:(TYEventType)eventType
+{
+    if(isCycle == YES)
+    {
+        switch(eventType)
+        {
+            case POMODORO_COMPLETE:
+                if([self isLastPomodoroOfTheCycle])
+                    [self startLongBreak];
+                else
+                    [self startShortBreak];
+                break;
+            case SHORT_BREAK_COMPLETE:
+                [self startPomodoro];
+                break;
+            case LONG_BREAK_COMPLETE:
+                [self startPomodoro];
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 @end

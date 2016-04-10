@@ -12,20 +12,22 @@
     TYTimerContextType contextType;
     __strong NSString *name;
     int remainingSeconds;
+    BOOL IsCycle;
 }
 
-+ (id)ofType:(TYTimerContextType)contextType name:(NSString *)name remainingSeconds:(int)initialRemainingSeconds
++ (id)ofType:(TYTimerContextType)contextType name:(NSString *)name remainingSeconds:(int)initialRemainingSeconds performCycle:(BOOL)performCycle
 {
-    return [[TYDefaultTimerContext alloc] initAs:contextType name:name remainingSeconds:initialRemainingSeconds];
+    return [[TYDefaultTimerContext alloc] initAs:contextType name:name remainingSeconds:initialRemainingSeconds performCycle:performCycle];
 }
 
-- (id)initAs:(TYTimerContextType)aContextType name:(NSString *)aName remainingSeconds:(int)initialRemainingSeconds
+- (id)initAs:(TYTimerContextType)aContextType name:(NSString *)aName remainingSeconds:(int)initialRemainingSeconds performCycle:(BOOL)performCycle;
 {
     self = [super init];
     if(self) {
         contextType = aContextType;
         name = aName;
         remainingSeconds = initialRemainingSeconds;
+        IsCycle = performCycle;
     }
     return self;
 }
@@ -49,5 +51,16 @@
 {
     return contextType;
 }
+
+- (BOOL)getIsCycle
+{
+    return IsCycle ;
+}
+
+- (void)setIsCycle:(BOOL)isCycle
+{
+    IsCycle = isCycle;
+}
+
 
 @end

@@ -59,4 +59,10 @@
     [eventBus publish:TIMER_STOP data:currentTimerContext];
 }
 
+- (void)manualStop
+{
+    [currentTimerContext setIsCycle:NO];
+    [self stop];
+}
+
 @end

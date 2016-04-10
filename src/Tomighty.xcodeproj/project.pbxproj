@@ -63,6 +63,7 @@
 		30CFBF1218BD76F7000266B4 /* TYMockSystemTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30CFBF1118BD76F7000266B4 /* TYMockSystemTimer.m */; };
 		30DB72F618CD4FC800293915 /* TYTomightyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F518CD4FC800293915 /* TYTomightyTests.m */; };
 		30DB72FA18CD54D200293915 /* TYDefaultTomighty.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DB72F918CD54D200293915 /* TYDefaultTomighty.m */; };
+		6304EEB81CBA5F2F00EB57D3 /* icon-start-cycle.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6304EEB71CBA5F2F00EB57D3 /* icon-start-cycle.tiff */; };
 		63936C611CB8CF7500AC9760 /* TYNotificationAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 63936C601CB8CF7500AC9760 /* TYNotificationAgent.m */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,7 @@
 		30DB72F718CD54C000293915 /* TYTomighty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TYTomighty.h; path = Core/TYTomighty.h; sourceTree = "<group>"; };
 		30DB72F818CD54D200293915 /* TYDefaultTomighty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYDefaultTomighty.h; path = Core/TYDefaultTomighty.h; sourceTree = "<group>"; };
 		30DB72F918CD54D200293915 /* TYDefaultTomighty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYDefaultTomighty.m; path = Core/TYDefaultTomighty.m; sourceTree = "<group>"; };
+		6304EEB71CBA5F2F00EB57D3 /* icon-start-cycle.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "icon-start-cycle.tiff"; path = "Icons/icon-start-cycle.tiff"; sourceTree = SOURCE_ROOT; };
 		63936C5F1CB8CF7500AC9760 /* TYNotificationAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYNotificationAgent.h; path = Core/Reactive/TYNotificationAgent.h; sourceTree = "<group>"; };
 		63936C601CB8CF7500AC9760 /* TYNotificationAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYNotificationAgent.m; path = Core/Reactive/TYNotificationAgent.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,6 +388,7 @@
 		305D161A18CD12FA00CE6A34 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				6304EEB71CBA5F2F00EB57D3 /* icon-start-cycle.tiff */,
 				30C383BF18CFC9FC00FABFFE /* icon-clock.tiff */,
 				30C383C018CFC9FC00FABFFE /* icon-start-long-break.tiff */,
 				30C383C118CFC9FC00FABFFE /* icon-start-pomodoro.tiff */,
@@ -575,6 +578,7 @@
 				304AF82018BD04BE00A2EA74 /* InfoPlist.strings in Resources */,
 				305D161E18CD13F100CE6A34 /* tomighty.icns in Resources */,
 				30C383CF18CFC9FC00FABFFE /* icon-status-pomodoro.tiff in Resources */,
+				6304EEB81CBA5F2F00EB57D3 /* icon-start-cycle.tiff in Resources */,
 				30C383D718CFCA6B00FABFFE /* timer_start.wav in Resources */,
 				304AF82E18BD04BE00A2EA74 /* Images.xcassets in Resources */,
 				30C383CC18CFC9FC00FABFFE /* icon-start-short-break.tiff in Resources */,

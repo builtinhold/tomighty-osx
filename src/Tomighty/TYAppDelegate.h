@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSMenuItem *startPomodoroMenuItem;
 @property (weak) IBOutlet NSMenuItem *startShortBreakMenuItem;
 @property (weak) IBOutlet NSMenuItem *startLongBreakMenuItem;
+@property (weak) IBOutlet NSMenuItem *startCycleMenuItem;
 
 - (IBAction)startPomodoro:(id)sender;
 - (IBAction)startShortBreak:(id)sender;
@@ -27,5 +28,6 @@
 - (IBAction)stopTimer:(id)sender;
 - (IBAction)resetPomodoroCount:(id)sender;
 - (IBAction)showPreferences:(id)sender;
+- (IBAction)startCycle:(id)sender;
 
 @end

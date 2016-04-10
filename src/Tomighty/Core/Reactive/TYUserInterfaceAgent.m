@@ -26,19 +26,33 @@
 - (void)updateAppUiInResponseToEventsFrom:(id <TYEventBus>)eventBus
 {
     [eventBus subscribeTo:POMODORO_START subscriber:^(id eventData) {
-        [ui switchToPomodoroState];
+        id <TYTimerContext> timerContext = eventData;
+        if([timerContext getIsCycle] == NO)
+            [ui switchToPomodoroState];
+        else
+            [ui switchToPomodoroCycleState];
     }];
     
     [eventBus subscribeTo:TIMER_STOP subscriber:^(id eventData) {
-        [ui switchToIdleState];
+        id <TYTimerContext> timerContext = eventData;
+        if([timerContext getIsCycle] == NO)
+            [ui switchToIdleState];
     }];
     
     [eventBus subscribeTo:SHORT_BREAK_START subscriber:^(id eventData) {
-        [ui switchToShortBreakState];
+        id <TYTimerContext> timerContext = eventData;
+        if([timerContext getIsCycle] == NO)
+            [ui switchToShortBreakState];
+        else
+            [ui switchToShortBreakCycleState];
     }];
     
     [eventBus subscribeTo:LONG_BREAK_START subscriber:^(id eventData) {
-        [ui switchToLongBreakState];
+        id <TYTimerContext> timerContext = eventData;
+        if([timerContext getIsCycle] == NO)
+            [ui switchToLongBreakState];
+        else
+            [ui switchToLongBreakCycleState];
     }];
     
     [eventBus subscribeTo:TIMER_TICK subscriber:^(id eventData) {

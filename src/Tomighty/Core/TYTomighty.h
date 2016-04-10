@@ -14,5 +14,7 @@
 - (void)startLongBreak;
 - (void)stopTimer;
 - (void)resetPomodoroCount;
+- (void)startCycle;
+- (void)setPerformCycle:(BOOL) performCycle;
 
 @end
